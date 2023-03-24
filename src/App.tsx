@@ -7,6 +7,18 @@ function App() {
   const [reposData, setReposData] = useState<{}[]>([{}]);
   const [numberOfResults, setNumberOfResults] = useState<number>(0);
 
+  const columns = [
+    { field: 'col1', headerName: 'Repository name', width: 150 },
+    { field: 'col2', headerName: 'Author', width: 150 },
+    { field: 'col3', headerName: 'Stars', width: 150 },
+  ];
+
+  const rows = [
+    { id: 1, col1: 'Hello', col2: 'World' },
+    { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
+    { id: 3, col1: 'MUI', col2: 'is Amazing' },
+  ];
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     return repositorySearch(keyword).then(repos => {
@@ -29,7 +41,7 @@ function App() {
         </label>
         <button type="submit">Search</button>
       </form>
-      <DataGrid />
+      <DataGrid rows={rows} columns={columns} pageSizeOptions={[25, 50 , 75, 100]} />
     </div>
   );
 }
