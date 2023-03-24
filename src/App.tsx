@@ -4,9 +4,8 @@ import { DataGrid } from '@mui/x-data-grid';
 
 function App() {
   const [keyword, setKeyword] = useState<string>('');
-  const [rowsData, setRowsData] = useState<{}[]>([{id:1}]);
-  const [numberOfResults, setNumberOfResults] = useState<number>(0);
-console.log(rowsData)
+  const [rowsData, setRowsData] = useState<{}[]>([{ id: 1 }]);
+
   const columns = [
     { field: 'repoName', headerName: 'Repository name', width: 150 },
     { field: 'authorName', headerName: 'Author', width: 150 },
@@ -16,7 +15,6 @@ console.log(rowsData)
   const handleSubmit = (e: any) => {
     e.preventDefault();
     return repositorySearch(keyword).then(repos => {
-      setNumberOfResults(repos.total_count);
       const relevantData = repos.items.map((repo: any) => {
         return {
           id: repo.id,
@@ -47,6 +45,9 @@ console.log(rowsData)
         rows={rowsData}
         columns={columns}
         autoHeight={true}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 25 } },
+        }}
         pageSizeOptions={[25, 50, 75, 100]}
       />
     </div>
