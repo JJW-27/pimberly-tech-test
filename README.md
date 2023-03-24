@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+### Pimberly tech test - Joe Williams
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run this project
 
-## Available Scripts
+Open up the project in VSCode or other editor, and run command 'npm start'.
 
-In the project directory, you can run:
+## What I have done
 
-### `npm start`
+- Initialised with create-react-app (TypeScript template)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Created a basic form (controlled component)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Created an api call to the github api and inserted the form input in as an argument when the form is submitted
 
-### `npm test`
+- Stored the resulting data in state
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Created a basic table using MaterialUI DataGrid (I chose this as it comes with in-built pagination) and make sure I can get it working with mock data
 
-### `npm run build`
+- Map over the received api data to generate the array of objects that is required for the DataGrid rows prop
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Further improvements I could make
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Fetching the whole list rather than only 100 results
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Adding extra search terms / parameters, such as programming language
 
-### `npm run eject`
+- Adding extra TypeScript type declarations (I added some to show I know something about it, but didn't have time to do everything I could have)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Conditional rendering of the table to only appear when a search has been submitted
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Clearing input when a search is submitted
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- General styling
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Problems that I faced
 
-## Learn More
+- I didn't manage to get the api to give me every result, only the first 30, and then later the first 100 when I increased it. I'm not 100% sure why this happened, but I think next I would try looking into including an auth token with my request that might allow me to access every result
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- The table did not show the results at first, even with the mock data. It turned out I just needed to set the autoheight prop
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- I tried to add a type declaration to the 'repo' argument inside the map, however I think now that there is no need, as this is data coming from an api, so it had too many properties and also may be subject to change if github decided to alter their api, so I could not account for these changes in my type declarations.
