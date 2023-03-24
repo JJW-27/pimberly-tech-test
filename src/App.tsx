@@ -8,15 +8,15 @@ function App() {
   const [numberOfResults, setNumberOfResults] = useState<number>(0);
 
   const columns = [
-    { field: 'col1', headerName: 'Repository name', width: 150 },
-    { field: 'col2', headerName: 'Author', width: 150 },
-    { field: 'col3', headerName: 'Stars', width: 150 },
+    { field: 'repoName', headerName: 'Repository name', width: 150 },
+    { field: 'authorName', headerName: 'Author', width: 150 },
+    { field: 'stars', headerName: 'Stars', width: 150 },
   ];
 
   const rows = [
-    { id: 1, col1: 'Hello', col2: 'World' },
-    { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
-    { id: 3, col1: 'MUI', col2: 'is Amazing' },
+    { id: 1, repoName: 'Hello', authorName: 'World', stars: 0 },
+    { id: 2, repoName: 'DataGridPro', authorName: 'is Awesome', stars: 0 },
+    { id: 3, repoName: 'MUI', authorName: 'is Amazing', stars: 0 },
   ];
 
   const handleSubmit = (e: any) => {
@@ -41,7 +41,12 @@ function App() {
         </label>
         <button type="submit">Search</button>
       </form>
-      <DataGrid rows={rows} columns={columns} pageSizeOptions={[25, 50 , 75, 100]} />
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        autoHeight={true}
+        pageSizeOptions={[25, 50, 75, 100]}
+      />
     </div>
   );
 }
