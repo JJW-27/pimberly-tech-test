@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { repositorySearch } from './api';
+import { DataGrid } from '@mui/x-data-grid';
 
 function App() {
   const [keyword, setKeyword] = useState<string>('');
@@ -26,7 +27,9 @@ function App() {
             }}
           ></input>
         </label>
+        <button type="submit">Search</button>
       </form>
+      <DataGrid />
     </div>
   );
 }
